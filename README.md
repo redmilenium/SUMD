@@ -115,3 +115,5 @@ El soft del ESP32 esta simplificado al máximo para hacer la comprobación de su
 
 
 
+
+
