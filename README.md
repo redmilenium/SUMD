@@ -101,7 +101,7 @@ void loop()
  }
 
 ```
-En la FC he cargado y configurado el soft Betafligh y se puede ver el correcto funcionamiento del simulador de protocolo SUMD
+En la FC he cargado y configurado el soft Betafligh para comprobar el correcto funcionamiento del simulador de protocolo SUMD
 
 ![image](https://github.com/redmilenium/SUMD/assets/48222471/1c6954cf-9bd0-4bd7-ba0e-fd88ef8e259f)
 
