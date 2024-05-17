@@ -20,6 +20,8 @@ El tercero indica el numero de canales que estamos enviando. El máximo son 32.
 Los siguientes y por parejas indican el valor de cada canal.
 ![image](https://github.com/redmilenium/SUMD/assets/48222471/d3f150a5-a479-450f-b6e7-30b12788469b)
 
+El valor a enviar para cada canal se calcula multiplicando por 8 el valor en microsegundos que queremos enviar.
+
 Y los 2 últimos son el calculo del CRC de la trama. Si el CRC es incorrecto, la trama será desechada.
 
 Dentro de la comunicación deberemos enviar datos como el valor del acelerador, si queremos avanzar o retroceder, ir a la izquierda o a la derecha, girar sobre nosotros mismos, y multiples posibilidades mas.
