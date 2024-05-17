@@ -15,16 +15,15 @@ El primer byte indica el fabricante
 
 El segundo solo tiene 2 valores validos 0x01 (Rx ok) y 0x81 (indica a la FC que se active Fail Safe), cualquier otro valor invalida la trama.
 
-El tercero indica el numero de canales que estamos enviando.
+El tercero indica el numero de canales que estamos enviando. El máximo son 32. 
 
 Los siguientes y por parejas indican el valor de cada canal.
 ![image](https://github.com/redmilenium/SUMD/assets/48222471/d3f150a5-a479-450f-b6e7-30b12788469b)
 
 Y los 2 últimos son el calculo del CRC de la trama. Si el CRC es incorrecto, la trama será desechada.
 
-
 Dentro de la comunicación deberemos enviar datos como el valor del acelerador, si queremos avanzar o retroceder, ir a la izquierda o a la derecha, girar sobre nosotros mismos, y multiples posibilidades mas.
-Son los llamados canales (el máximo son 32). 
+
 ![image](https://github.com/redmilenium/SUMD/assets/48222471/4e02af22-0013-4e3b-9e83-98b5ba68169a)
 
 Ejemplo de una FC
