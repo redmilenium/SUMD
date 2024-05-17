@@ -107,9 +107,6 @@ En la FC he cargado y configurado el soft Betafligh y se puede ver el correcto f
 
 El soft del ESP32 esta simplificado al máximo para hacer la comprobación de su correcto funcionamiento.
 
-Este soft esta cargado sobre este esquema:
-
-![image](https://github.com/redmilenium/SUMD/assets/48222471/315ed7e9-7456-42e8-888b-471dbe0f68a6)
 
 
 
