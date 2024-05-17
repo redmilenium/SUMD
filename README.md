@@ -5,7 +5,11 @@ En el caso de los drones y aviones, permiten la estabilización del modelo por m
 Los datos para que nuestro equipo haga lo que queremos, llegan a la FC desde el receptor. 
 
 Habitualmente la comunicacion entre el receptor u la FC es mediante UART a 115.200 bps 8N1 y existen multiples protocolos. Uno de ellos es el SUMD.
+Asi se ve una trama del protocolo SUMD
+![image](https://github.com/redmilenium/SUMD/assets/48222471/6684be81-f879-4d13-aa7c-cbf37fb2c543)
+
 Dentro de la comunicación deberemos enviar datos como el valor del acelerador, si queremos avanzar o retroceder, ir a la izquierda o a la derecha, girar sobre nosotros mismos, y multiples posibilidades mas.
+Son los llamados canales.
 ![image](https://github.com/redmilenium/SUMD/assets/48222471/4e02af22-0013-4e3b-9e83-98b5ba68169a)
 
 Ejemplo de una FC
