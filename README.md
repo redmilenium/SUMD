@@ -1,5 +1,5 @@
-# SUMD
-GENERACION DE PROTOCOLO SUMD Y COMPROBACION EN FC (CONTROLADORA DE VUELO DE DRONE)
+# SUMD 
+Generación de protocolo SUMD y comprobación en FC (Controladora de vuelo de drones)
 
 Las FC (controladora de vuelo) se utilizan para gestionar el funcionamiento de drones, aviones, barcos, etc. Disponen de acelerometro, giroscopo, barometro, etc, etc.
 En el caso de los drones y aviones, permiten la estabilización del modelo por medio de la IMU (acelerometro y giroscopo).
