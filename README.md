@@ -113,6 +113,103 @@ Por tanto, el tren de tramas debe presentar un aspecto mas o menos asi (la separ
 
 ![image](https://github.com/redmilenium/SUMD/assets/48222471/6de3dc03-e972-4821-8b9a-5cae92928627)
 
+Puede ocurrir que al cargar con más codigo al ESP32, "descuide" el envio de tramas SUMD al estar ejecutando otras rutinas y el envio de tramas SUMD se vea afectado, aumentando el tiempo entre ellas a mas de 10 ms.
+
+Dado que ESP32 dispone de 2 nucleos, esto se soluciona cargando el trabajo del envio de las tramas SUMD al  nucleo ocioso.
+
+Mientras que el nucleo titular se encarga del resto:
+```
+/*
+    gestion de la FC del drone
+    - envio de datos con protocolo SUMD 16 CANALES
+*/
+
+#include "CRC16.h"
+#include "CRC.h"
+unsigned long seven_milis;
+
+char str[40] = {0xa8,0x01,0x10,   //16x2 + 3 =35     27
+0x22,0x60,  //1100
+0x2e,0xe0,  //1500
+0x3b,0x60,  //1900
+0x41,0xa0,  //2100
+0x1f,0x40,  //1000
+0x2e,0xe0,  //1500
+0x2e,0xe0,
+0x2e,0xe0,
+0x2e,0xe0,
+0x2e,0xe0,
+0x2e,0xe0,
+0x2e,0xe0,
+0x2e,0xe0,
+0x2e,0xe0,
+0x2e,0xe0,
+0x2E,0xE0};
+
+CRC16 crc;
+
+
+void calcula_crc()
+{
+  crc.setPolynome(0x1021);
+  crc.add((uint8_t*)str, 35);
+  str[35] = crc.calc() >> 8;
+  str[36] = crc.calc() & 0xFF;  
+  crc.reset();
+  for (int alfa = 0; alfa <= 36; alfa++) // envio el array completo: datos + crc
+    {
+     Serial1.print(str[alfa]);
+    }
+}
+
+//**************************
+TaskHandle_t Task1;
+//**************************
+//************************************************************************************************
+void Task1code( void * pvParameter) 
+{
+ while(1)
+ {
+    // rutina para el envio de protocolo SUMD a la FC del drone 
+   if(millis()-seven_milis>10)//10
+   {
+     calcula_crc(); // obtiene el CRC,lo añade al final del array y lo envia
+     seven_milis=millis();
+   }
+ }
+}
+
+ 
+void setup() 
+{
+//*************************************************************************************************
+xTaskCreatePinnedToCore(
+     Task1code, /* Function to implement the task */
+     "protocolo SUMD", /* Name of the task */
+     10000,  /* Stack size in words */
+      NULL,  /* Task input parameter */
+      0,  /* Priority of the task */
+      &Task1,  /* Task handle. */
+      0); /* Core where the task should run */
+//*************************************************************************************************
+
+
+  // Initialize Serial Monitor
+  Serial.begin(115200);
+
+  Serial1.begin(115200, SERIAL_8N1,26,25,true);   // SUMD FC invertido
+  Serial1.write("\n");
+}
+ 
+void loop() 
+{
+
+ // ya tienes recursos de procesador para que hagas otras cosas
+   
+ }
+
+```
+
 SEÑAL INVERTIDA
 
 A veces puede ocurrir que una controladora necesita que la señal SUMD le llegue invertida.
