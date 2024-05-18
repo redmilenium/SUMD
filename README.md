@@ -113,8 +113,27 @@ Por tanto, el tren de tramas debe presentar un aspecto mas o menos asi (la separ
 
 ![image](https://github.com/redmilenium/SUMD/assets/48222471/6de3dc03-e972-4821-8b9a-5cae92928627)
 
+SEÑAL INVERTIDA
 
+A veces puede ocurrir que una controladora necesita que la señal SUMD le llegue invertida.
 
+Esto sería una señal en modo normal:
+
+![image](https://github.com/redmilenium/SUMD/assets/48222471/9053d44e-5a34-4ff4-aea2-87db71d75b2c)
+
+Y esta sería una señal invertida:
+
+![image](https://github.com/redmilenium/SUMD/assets/48222471/4c776cfe-1adb-4038-8443-73a18c5cbda0)
+
+La diferencia es el punto de partida de la señal. En el primer caso la señal en reposo esta a 1 lógico y en el segundo caso esta a 0 lógico.
+
+Esto se configura asi en el ESP32:
+
+Serial1.begin(115200, SERIAL_8N1,26,25,true);   // SUMD FC señal invertida
+
+Serial1.begin(115200, SERIAL_8N1,26,25);   // SUMD FC señal normal
+
+De esta manera evitamos añadir transistores al circuito para invertir la señal.
 
 
 
