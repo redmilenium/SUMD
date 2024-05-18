@@ -113,6 +113,17 @@ El soft del ESP32 esta simplificado al máximo para hacer la comprobación de su
 
 El envio de tramas SUMD deber ser constante y en intervalos no superiores a 10 milisegundos, de otra forma, la FC entiende que se ha cortado la comunicación con el receptor y activa el modo SAFE, procediendo a aterrizar o volviendo al punto de despeque en el caso de llevar GPS y estar asi configurado.
 
+Ejemplo de tren de tramas no correcto:
+
+![image](https://github.com/redmilenium/SUMD/assets/48222471/734500ad-caa1-4fa1-8deb-2232953e7c17)
+
+Y su efecto en la FC del drone:
+
+![image](https://github.com/redmilenium/SUMD/assets/48222471/c579d7f5-8283-40ba-b4bd-16e0418e1615)
+
+
+
+
 Por tanto, el tren de tramas debe presentar un aspecto mas o menos asi (la separacion entre ellas no llega a los 10 ms):
 
 ![image](https://github.com/redmilenium/SUMD/assets/48222471/6de3dc03-e972-4821-8b9a-5cae92928627)
