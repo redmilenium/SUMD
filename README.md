@@ -33,6 +33,10 @@ Ejemplo de una FC
 
 Habitualmente se conecta un receptor a la entrada de la FC para el control en remoto del aeromodelo (drone, avion, etc.)
 
+Vista del montaje de pruebas:
+
+![image](https://github.com/redmilenium/SUMD/assets/48222471/565410bc-8053-4724-aeb1-603c0275064e)
+
 He simulado, mediante un ESP32 el protocolo con el siguiente soft:
 
 ```
