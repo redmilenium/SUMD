@@ -119,10 +119,7 @@ Ejemplo de tren de tramas no correcto:
 
 Y su efecto en la FC del drone:
 
-![image](https://github.com/redmilenium/SUMD/assets/48222471/c579d7f5-8283-40ba-b4bd-16e0418e1615)
-
-
-
+![image](https://github.com/redmilenium/SUMD/assets/48222471/51cffd31-a8ae-4e68-9110-52163bc70d96)
 
 Por tanto, el tren de tramas debe presentar un aspecto mas o menos asi (la separacion entre ellas no llega a los 10 ms):
 
