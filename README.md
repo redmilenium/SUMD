@@ -96,7 +96,7 @@ void setup()
 void loop() 
 {
    // rutina para el envio de protocolo SUMD a la FC del drone 
-   if(millis()-seven_milis>10)//10
+   if(millis()-seven_milis>10)
    {
     seven_milis=millis();
     calcula_crc(); // obtiene el CRC,lo añade al final del array y lo envia
@@ -105,6 +105,7 @@ void loop()
  }
 
 ```
+
 En la FC he cargado y configurado el soft Betafligh para comprobar el correcto funcionamiento del simulador de protocolo SUMD
 
 ![image](https://github.com/redmilenium/SUMD/assets/48222471/1c6954cf-9bd0-4bd7-ba0e-fd88ef8e259f)
@@ -183,7 +184,7 @@ void Task1code( void * pvParameter)
  while(1)
  {
     // rutina para el envio de protocolo SUMD a la FC del drone 
-   if(millis()-seven_milis>10)//10
+   if(millis()-seven_milis>10)
    {
      calcula_crc(); // obtiene el CRC,lo añade al final del array y lo envia
      seven_milis=millis();
@@ -221,6 +222,22 @@ void loop()
  }
 
 ```
+
+Utilizo platformio para programar y la configuración del archivo platformio.ini es la siguiente: 
+
+```
+[env:esp32doit-devkit-v1]
+platform = espressif32@5.1.0
+board = esp32doit-devkit-v1
+framework = arduino
+monitor_speed = 115200
+monitor_port = COM5
+upload_speed = 921600
+upload_port = COM5
+lib_deps = 
+	robtillaart/CRC@^1.0.3
+```
+Para el calculo del CRC utilizo la libreria robtillaart/CRC@^1.0.3 que te puedes descargar facilmente desde platformio home.
 
 SEÑAL INVERTIDA
 
